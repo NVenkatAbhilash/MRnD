@@ -1,0 +1,53 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.css' %}">
+
+</head>
+
+<body>
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary" href='/onlineapp/logout'>
+                        <strong>Logout</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<button class="button" style="margin: 10px 40px" onclick = "window.location.href='{% url 'add_student.url' college_id %}'">Add Student</button>
+<center>
+    <h1 class = "title is-2">{{college}}</h1>
+</center>
+<center>
+    <div class="details">
+    <table class="table">
+        <tr>
+            <th>NAME</th>
+            <th>EMAIL</th>
+            <th>TOTAL</th>
+            <th>EDIT/DELETE</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{student.name}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.mocktest1.total}}</td>
+            <td><a href="{% url 'edit_student.url' college_id student.id%}">edit</a>/<a href="{% url 'delete_student.url' college_id student.id%}">delete</a></td>
+        </tr>
+        {%endfor%}
+
+    </table>
+
+    </div>
+</center>
+</body>
+
+</html>

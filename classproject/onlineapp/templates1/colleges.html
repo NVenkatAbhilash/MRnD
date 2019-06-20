@@ -1,0 +1,46 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.css' %}">
+    <style>
+
+    </style>
+</head>
+<body>
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-primary" href='/onlineapp/logout'>
+                        <strong>Logout</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<a class="button" style="margin: 10px 40px" href="{% url 'add_colleges.url'%}">add college</a>
+<br>
+<center>
+    <h1 class = "title is-2">Participating Colleges</h1>
+</center>
+<br>
+<br>
+<center>
+<table class="table" style="width:70%">
+    <tr>
+        <th>COLLEGE ID</th>
+        <th>COLLEGE NAME</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+    </tr>
+    {%for college in colleges%}
+    <tr><td>{{college.id}}</td><td><a href="{% url 'college_details.url' college.id %}">{{college.name}}</a> </td> <td><a href="{% url 'edit_college.url' college.id %}">edit</a></td> <td><a href="{% url 'delete_college.url' college.id %}">delete</a></td></tr>
+    {%endfor%}
+</table>
+</center>
+</body>
+</html>
