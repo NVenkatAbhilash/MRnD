@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.css' %}">
+</head>
+<body style="margin:200px">
+<center>
+    <table class="table">
+        <th>DESCRIPTION</th>
+        <th>DUE DATE</th>
+        <th>COMPLETED</th>
+        {% for item in items %}
+        <tr>
+            <td>{{item.description}}</td>
+            <td>{{item.due_date}}</td>
+            <td>{{item.completed}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+</body>
+</html>

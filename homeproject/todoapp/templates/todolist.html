@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bulma.css' %}">
+</head>
+<body style="margin:200px">
+<center>
+    <table class="table">
+        {% for each_list in list %}
+        <tr>
+        <td><a href="{% url 'items_url' each_list.id %}">{{each_list.name}}</a></td>
+            <td>{{each.datetime}}</td>
+            <td></td>
+        </tr>
+        {% endfor %}
+    </table>
+</center>
+</body>
+</html>
